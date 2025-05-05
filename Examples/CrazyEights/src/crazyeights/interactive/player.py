@@ -33,7 +33,7 @@ class InteractivePlayer(Player):
     def pick_suit(self) -> str:
         """Pick a suit after playing an 8."""
         while True:
-            suit = input("Pick a suit: ")
+            suit = input("Pick a suit (h♥/d♦/c♣/s♠): ")
             if suit.lower() in ["h", "hearts", "♥"]:
                 suit = "Hearts"
             elif suit.lower() in ["d", "diamonds", "♦"]:
