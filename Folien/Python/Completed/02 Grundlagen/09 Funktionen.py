@@ -93,27 +93,3 @@ def begrüßung(name):
 
 # %%
 begrüßung("Max")
-
-
-# %% [markdown]
-# ### Mini-Workshop: Funktionen die sich selbst aufrufen
-#
-# Schreiben Sie eine Funktion `fakultät(n)`, die die Fakultät einer Zahl `n`
-# berechnet.
-#
-# *Hinweis:* Die Fakultät von 0 ist 1, die Fakultät von 1 ist 1, und die Fakultät
-# von n ist n mal die Fakultät von n-1.
-
-# %%
-def fakultät(n):
-    if n == 0:
-        return 1
-    else:
-        return n * fakultät(n - 1)
-
-
-# %%
-assert fakultät(0) == 1
-assert fakultät(1) == 1
-assert fakultät(2) == 2
-assert fakultät(5) == 120

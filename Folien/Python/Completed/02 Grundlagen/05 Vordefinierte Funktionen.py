@@ -68,6 +68,12 @@ round(4.6)
 # %%
 print(round(0.5), round(1.5), round(2.5), round(3.5))
 
+# %%
+len("Hello, world!")
+
+# %%
+len([1, 2, 3, 4, 5])
+
 # %% [markdown]
 #
 # ## Mini-Workshop: Vordefinierte Funktionen
@@ -99,4 +105,3 @@ max(2.5, 1.7)
 
 # %%
 float("1.234") + 2.345
-

@@ -13086,7 +13086,7 @@ div#notebook {
 <main>
 <div class="border-box-sizing" id="notebook" tabindex="-1">
 <div class="container" id="notebook-container">
-<div class="cell border-box-sizing text_cell rendered celltag_slide" id="cell-id=74e76cc3e5a18f3f"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_slide" id="cell-id=b05b9bc5196b8d9c"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><img alt="Python Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRw
@@ -13136,7 +13136,7 @@ ZS1kYXNoYXJyYXk6bm9uZTtzdHJva2Utb3BhY2l0eToxIi8+PC9zdmc+
 " style="display:block;margin:auto;width:10%"/>
 <br/></p>
 <div style="text-align:center; font-size:200%;">
-<b>Vererbung: Motivation</b>
+<b>Eigenschaften von Tupeln</b>
 </div>
 <br>
 <div style="text-align:center;">Dr. Matthias Hölzl</div>
@@ -13144,78 +13144,66 @@ ZS1kYXNoYXJyYXk6bm9uZTtzdHJva2Utb3BhY2l0eToxIi8+PC9zdmc+
 </br></div>
 </div>
 </div>
-<div class="cell border-box-sizing text_cell rendered celltag_slide" id="cell-id=174e4b863e23e0a7"><div class="prompt input_prompt">
+<div class="cell border-box-sizing text_cell rendered celltag_slide" id="cell-id=37e1f7062bb0af50"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Motivation-f%C3%BCr-Vererbung">Motivation für Vererbung<a class="anchor-link" href="#Motivation-f%C3%BCr-Vererbung">¶</a></h2><p>Wir haben folgende Klasse implementiert:</p>
+<h1 id="Eigenschaften-von-Tupeln">Eigenschaften von Tupeln<a class="anchor-link" href="#Eigenschaften-von-Tupeln">¶</a></h1><ul>
+<li>Tupel können beliebige Python-Werte speichern</li>
+<li>Elemente in einem Tupel haben eine feste Reihenfolge</li>
+<li>Auf Elemente eines Tupels kann mit einem Index zugegriffen werden</li>
+<li><code>for</code>-Schleifen können über die Elemente von Tupeln iterieren (Iterables)</li>
+<li>Tupel können <em>nicht</em> modifiziert werden</li>
+</ul>
+<p>Oft werden Tupel zum Speichern <em>heterogener</em> Daten verwendet.</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=06ef688472b56120">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=1fc6eadce2671e8b"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Modifizierbarkeit-von-Tupeln">Modifizierbarkeit von Tupeln<a class="anchor-link" href="#Modifizierbarkeit-von-Tupeln">¶</a></h2>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=6ebd73670033eff5">
 <div class="input">
 <div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">my_tuple</span> <span class="o">=</span> <span class="p">([</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">10</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=54263d9819df3cd9">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=33c0032f499c2d64">
 <div class="input">
 <div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">Point</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
-
-    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">"Point(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">)"</span>
-
-    <span class="k">def</span> <span class="nf">move</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dx</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">dy</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">+=</span> <span class="n">dx</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">+=</span> <span class="n">dy</span>
-
-    <span class="k">def</span> <span class="nf">randomize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">gauss</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">gauss</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># my_tuple[0] = [1, 2]</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_subslide celltag_keep" id="cell-id=80fb11d26388fb9d">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=2f59259ff2c3e93c">
 <div class="input">
 <div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">p</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-<span class="n">p</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">my_tuple</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt output_prompt">Out[3]:</div>
-<div class="output_text output_subarea output_execute_result">
-<pre>Point(1.0, 1.0)</pre>
 </div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=2b831cdcbaba5d75">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=f5e68087aa9262cf">
 <div class="input">
 <div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">p</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="n">p</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">my_tuple</span>
 </pre></div>
 </div>
 </div>
@@ -13225,297 +13213,199 @@ ZS1kYXNoYXJyYXk6bm9uZTtzdHJva2Utb3BhY2l0eToxIi8+PC9zdmc+
 <div class="output_area">
 <div class="prompt output_prompt">Out[4]:</div>
 <div class="output_text output_subarea output_execute_result">
-<pre>Point(3.0, 4.0)</pre>
+<pre>([1, 2], [10])</pre>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=b35625ea74222f00">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=b69ecbdc9a4a3364"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Mini-Workshop:-B%C3%BCcher">Mini-Workshop: Bücher<a class="anchor-link" href="#Mini-Workshop:-B%C3%BCcher">¶</a></h2><p>Wir wollen Tupel verwenden, um Bücher zu repräsentieren. Jedes Buch wird
+durch ein Tupel dargestellt, das den Autor (als String),
+den Titel (als String) und die Seitenzahl (als ganze Zahl) enthält.</p>
+<p>Stellen Sie das Buch "1984" von George Orwell mit 328 Seiten in dieser Form
+dar und speichern Sie es in einer Variable "orwell".</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=bb0bb652b5d9cc70">
 <div class="input">
 <div class="prompt input_prompt">In [5]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">p</span><span class="o">.</span><span class="n">randomize</span><span class="p">()</span>
-<span class="n">p</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">orwell</span> <span class="o">=</span> <span class="p">(</span><span class="s2">"1984"</span><span class="p">,</span> <span class="s2">"George Orwell"</span><span class="p">,</span> <span class="mi">328</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt output_prompt">Out[5]:</div>
-<div class="output_text output_subarea output_execute_result">
-<pre>Point(1.4, 3.0)</pre>
+</div>
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=08e6144992971d46"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Bilden Sie eine Liste aus dem genannten Buch "1984", sowie</p>
+<ul>
+<li>Catch-22 von Joseph Heller (453 Seiten)</li>
+<li>Fahrenheit 451 von Ray Bradbury (256 Seiten)</li>
+</ul>
+<p>und weisen Sie die Liste an eine Variablen <code>books</code> zu.</p>
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered celltag_subslide celltag_keep" id="cell-id=98bc56b1c6ccee8e">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=f071818296a581c6">
 <div class="input">
 <div class="prompt input_prompt">In [6]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">build_rectangle</span><span class="p">(</span><span class="n">left_lower</span><span class="p">:</span> <span class="n">Point</span><span class="p">,</span> <span class="n">right_upper</span><span class="p">:</span> <span class="n">Point</span><span class="p">):</span>
-    <span class="k">return</span> <span class="p">[</span><span class="n">left_lower</span><span class="p">,</span> <span class="n">right_upper</span><span class="p">]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">books</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="n">orwell</span><span class="p">,</span>
+    <span class="p">(</span><span class="s2">"Catch-22"</span><span class="p">,</span> <span class="s2">"Joseph Heller"</span><span class="p">,</span> <span class="mi">453</span><span class="p">),</span>
+    <span class="p">(</span><span class="s2">"Fahrenheit 451"</span><span class="p">,</span> <span class="s2">"Ray Bradbury"</span><span class="p">,</span> <span class="mi">256</span><span class="p">),</span>
+<span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=a404b11a3252ea81">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=fdd2f8e11c4b33fa"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Schreiben Sie Funktionen <code>title(book) -&gt; str</code>, <code>author(book) -&gt; str</code> und
+<code>pages(book) -&gt; int</code>, die den Titel, Autor und die Zahl der Seiten in einem Buch
+zurückgeben.</p>
+<p>Testen Sie die Funktionen mit dem Buch "1984".</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=afc04357c8a92c08">
 <div class="input">
 <div class="prompt input_prompt">In [7]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">build_rectangle</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Point</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">title</span><span class="p">(</span><span class="n">book</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">book</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt output_prompt">Out[7]:</div>
-<div class="output_text output_subarea output_execute_result">
-<pre>[Point(0.0, 0.0), Point(1.0, 1.0)]</pre>
 </div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered celltag_slide" id="cell-id=f65bf363178d859b"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Wie können wir farbige Punkte einführen?</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered celltag_alt" id="cell-id=d6ae30c80abe2de9">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=44bf0afe858261d8">
 <div class="input">
 <div class="prompt input_prompt">In [8]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="k">class</span> <span class="nc">ColorPoint</span><span class="p">:</span>
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"black"</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">x</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">y</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">color</span>
-
-    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">"ColorPoint(</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">x</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">y</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">color</span><span class="si">!r}</span><span class="s2">)"</span>
-
-    <span class="k">def</span> <span class="nf">move</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">dx</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">dy</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">+=</span> <span class="n">dx</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">+=</span> <span class="n">dy</span>
-
-    <span class="k">def</span> <span class="nf">randomize</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">gauss</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">gauss</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">assert</span> <span class="n">title</span><span class="p">(</span><span class="n">orwell</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"1984"</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_subslide celltag_keep" id="cell-id=1dea14ce3647dbfc">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=ad53ae2fc206d60b">
 <div class="input">
 <div class="prompt input_prompt">In [9]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">cp</span> <span class="o">=</span> <span class="n">ColorPoint</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="n">cp</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">author</span><span class="p">(</span><span class="n">book</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">book</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt output_prompt">Out[9]:</div>
-<div class="output_text output_subarea output_execute_result">
-<pre>ColorPoint(2.0, 3.0, 'black')</pre>
 </div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=3136de15a2af5731">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=cf21ef358eb39031">
 <div class="input">
 <div class="prompt input_prompt">In [10]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="k">assert</span> <span class="n">cp</span><span class="o">.</span><span class="n">x</span> <span class="o">==</span> <span class="mf">2.0</span>
-<span class="k">assert</span> <span class="n">cp</span><span class="o">.</span><span class="n">y</span> <span class="o">==</span> <span class="mf">3.0</span>
-<span class="k">assert</span> <span class="n">cp</span><span class="o">.</span><span class="n">color</span> <span class="o">==</span> <span class="s2">"black"</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">assert</span> <span class="n">author</span><span class="p">(</span><span class="n">orwell</span><span class="p">)</span> <span class="o">==</span> <span class="s2">"George Orwell"</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=b339fc446c033783">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=9d50d6a18b2b3de5">
 <div class="input">
 <div class="prompt input_prompt">In [11]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">cp</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="s2">"red"</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">pages</span><span class="p">(</span><span class="n">book</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">int</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">book</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=6abda88be503c871">
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=b91c6737adfffa13">
 <div class="input">
 <div class="prompt input_prompt">In [12]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="k">assert</span> <span class="n">cp</span><span class="o">.</span><span class="n">x</span> <span class="o">==</span> <span class="mf">2.0</span>
-<span class="k">assert</span> <span class="n">cp</span><span class="o">.</span><span class="n">y</span> <span class="o">==</span> <span class="mf">3.0</span>
-<span class="k">assert</span> <span class="n">cp</span><span class="o">.</span><span class="n">color</span> <span class="o">==</span> <span class="s2">"red"</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">assert</span> <span class="n">pages</span><span class="p">(</span><span class="n">orwell</span><span class="p">)</span> <span class="o">==</span> <span class="mi">328</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep celltag_subslide" id="cell-id=42d8b83f244b9172">
+<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=ee6b9b8b076e694e"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Schreiben Sie eine Funktion <code>get_short_books(books)</code>, die eine Liste von Büchern als
+Argument bekommt und eine Liste derjenigen Bücher zurückgibt, die weniger als 300
+Seiten haben:</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">get_short_books</span><span class="p">(</span><span class="n">books</span><span class="p">)</span>
+<span class="p">[(</span><span class="s1">'Fahrenheit 451'</span><span class="p">,</span> <span class="s1">'Ray Bradbury'</span><span class="p">,</span> <span class="mi">256</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered" id="cell-id=14a4e035610ca0a1">
 <div class="input">
 <div class="prompt input_prompt">In [13]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">cp</span><span class="o">.</span><span class="n">move</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="n">cp</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">get_short_books</span><span class="p">(</span><span class="n">books</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">book</span> <span class="ow">in</span> <span class="n">books</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">pages</span><span class="p">(</span><span class="n">book</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">300</span><span class="p">:</span>
+            <span class="n">result</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">book</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">result</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt output_prompt">Out[13]:</div>
-<div class="output_text output_subarea output_execute_result">
-<pre>ColorPoint(4.0, 6.0, 'red')</pre>
 </div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=de8f0cee72c10532">
+<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=d95cf847554add2d">
 <div class="input">
 <div class="prompt input_prompt">In [14]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="k">assert</span> <span class="n">cp</span><span class="o">.</span><span class="n">x</span> <span class="o">==</span> <span class="mf">4.0</span>
-<span class="k">assert</span> <span class="n">cp</span><span class="o">.</span><span class="n">y</span> <span class="o">==</span> <span class="mf">6.0</span>
-<span class="k">assert</span> <span class="n">cp</span><span class="o">.</span><span class="n">color</span> <span class="o">==</span> <span class="s2">"red"</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">assert</span> <span class="n">get_short_books</span><span class="p">(</span><span class="n">books</span><span class="p">)</span> <span class="o">==</span> <span class="p">[(</span><span class="s2">"Fahrenheit 451"</span><span class="p">,</span> <span class="s2">"Ray Bradbury"</span><span class="p">,</span> <span class="mi">256</span><span class="p">)]</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=5210e58e6879ea02">
+<div class="cell border-box-sizing code_cell rendered celltag_alt" id="cell-id=f4d7e5671424617b">
 <div class="input">
 <div class="prompt input_prompt">In [15]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">cp</span><span class="o">.</span><span class="n">randomize</span><span class="p">()</span>
-<span class="n">cp</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">get_short_books_2</span><span class="p">(</span><span class="n">books</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">book</span> <span class="k">for</span> <span class="n">book</span> <span class="ow">in</span> <span class="n">books</span> <span class="k">if</span> <span class="n">pages</span><span class="p">(</span><span class="n">book</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">300</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt output_prompt">Out[15]:</div>
-<div class="output_text output_subarea output_execute_result">
-<pre>ColorPoint(1.2, 2.4, 'red')</pre>
 </div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=fba8b53130fcd321"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Probleme">Probleme<a class="anchor-link" href="#Probleme">¶</a></h3><ul>
-<li>Code-Duplizierung</li>
-<li>Das Python Typsystem weiß nicht, dass <code>ColorPoint</code> ein <code>Point</code> ist:</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=383285c73f9fcc3b">
+<div class="cell border-box-sizing code_cell rendered celltag_alt" id="cell-id=6d890abea5d9306b">
 <div class="input">
 <div class="prompt input_prompt">In [16]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="nb">isinstance</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Point</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">assert</span> <span class="n">get_short_books</span><span class="p">(</span><span class="n">books</span><span class="p">)</span> <span class="o">==</span> <span class="p">[(</span><span class="s2">"Fahrenheit 451"</span><span class="p">,</span> <span class="s2">"Ray Bradbury"</span><span class="p">,</span> <span class="mi">256</span><span class="p">)]</span>
 </pre></div>
 </div>
-</div>
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt output_prompt">Out[16]:</div>
-<div class="output_text output_subarea output_execute_result">
-<pre>True</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=c008817f43b749b5">
-<div class="input">
-<div class="prompt input_prompt">In [17]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="nb">isinstance</span><span class="p">(</span><span class="n">ColorPoint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Point</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt output_prompt">Out[17]:</div>
-<div class="output_text output_subarea output_execute_result">
-<pre>False</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered celltag_keep" id="cell-id=d8e6a815a8228672">
-<div class="input">
-<div class="prompt input_prompt">In [18]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">build_rectangle</span><span class="p">(</span><span class="n">ColorPoint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">ColorPoint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="output_wrapper">
-<div class="output">
-<div class="output_area">
-<div class="prompt output_prompt">Out[18]:</div>
-<div class="output_text output_subarea output_execute_result">
-<pre>[ColorPoint(0.0, 0.0, 'black'), ColorPoint(1.0, 1.0, 'black')]</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing text_cell rendered celltag_subslide" id="cell-id=7bc394189143430f"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h3 id="Welche-L%C3%B6sungen-gibt-es?">Welche Lösungen gibt es?<a class="anchor-link" href="#Welche-L%C3%B6sungen-gibt-es?">¶</a></h3><ul>
-<li>Vererbung: <code>ColorPoint</code> erbt von <code>Point</code></li>
-<li>Protokolle: <code>ColorPoint</code> und <code>Point</code> implementieren das gleiche Protokoll</li>
-</ul>
-<p>Ergebnis: Subtyp- bzw. Konsistenz-Beziehung</p>
 </div>
 </div>
 </div>

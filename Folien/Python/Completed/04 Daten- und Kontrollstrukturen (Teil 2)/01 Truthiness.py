@@ -108,38 +108,3 @@ assert not (len("x") - 1)
 # %% [markdown]
 # *Antwort:* 
 # Nein. Das Ergebnis ist immer ein String der Länge 1 und damit truthy.
-
-# %% [markdown]
-#
-#
-# Finden Sie 3 verschiedene Argumente, für die die Funktion `is_truthy_and_falsy()`
-# den Wert `True` zurückgibt.
-#
-# *Hinweis:* Bitte schreiben Sie niemals Code wie `is_truthy_and_falsy()`!
-
-# %%
-def is_truthy_and_falsy(x):
-    if not (len(x) - 1) and not x[0]:
-        return True
-    else:
-        return False
-
-
-# %%
-assert is_truthy_and_falsy([0])
-
-# %%
-assert is_truthy_and_falsy([""])
-
-# %%
-assert is_truthy_and_falsy([False])
-
-# %%
-assert is_truthy_and_falsy([None])
-
-# %%
-assert is_truthy_and_falsy([[]])
-
-# %%
-assert is_truthy_and_falsy([0.0])
-

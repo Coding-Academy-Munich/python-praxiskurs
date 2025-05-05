@@ -34,7 +34,7 @@ for number in number_list:
 # ```
 
 # %% [markdown]
-# ### Mini-Workshop
+# ### Workshop
 #
 # Schreiben Sie eine Funktion `print_all(items: list)`, die die Elemente der
 # Liste `items` auf dem Bildschirm ausgibt, jeweils ein Element pro Zeile:

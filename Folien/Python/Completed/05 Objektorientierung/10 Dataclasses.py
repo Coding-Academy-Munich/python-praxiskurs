@@ -248,9 +248,11 @@ print(d2)
 # %% [markdown]
 #
 # Definieren Sie zunächst eine Klasse `ShoppingListItem`, die folgende Attribute hat:
+#
 # - `product: str`
 # - `price: float`
 # - `amount: int`
+#
 # Verwenden Sie den `@dataclass` Decorator um die Klasse zu definieren. Verwenden Sie
 # einen Default-Wert von 1 für `amount`.
 

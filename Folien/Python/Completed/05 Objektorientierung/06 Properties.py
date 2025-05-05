@@ -75,8 +75,15 @@ assert isclose(p.get_angle(), pi / 2)
 
 # %%
 p = GeoPointV0(1.0, 1.0)
+
+# %%
 print(p.x, p.y, p.get_radius(), p.get_angle())
 
+
+# %% [markdown]
+# ## Properties mit `@property`
+#
+# Der `@property`-Dekorator erlaubt es uns, Methoden wie Attribute zu verwenden.
 
 # %%
 class GeoPointV1:  # noqa
@@ -131,57 +138,103 @@ assert p.y == 2.0
 assert p.radius == 2.0
 assert isclose(p.angle, pi / 2)
 
-# %%
-GeoPointV1(1.0, 0.0)
-
-# %%
-GeoPointV1(0.0, 2.0)
-
-# %%
-p = GeoPointV1(1.0, 1.0)
-print(p.x, p.y, p.radius, p.angle)
-
-
 # %% [markdown]
 #
-# ## Setter für Properties:
+# ## Schreibgeschützte Attribute
 #
-# Properties können auch modifiziert werden:
+# Ein häufiger Anwendungsfall für Properties ist das Bereitstellen eines
+# schreibgeschützten Zugriffs auf einen internen Wert.
+#
+# - Wir speichern den eigentlichen Wert in einem "privaten" Attribut (z.B.
+#   `_radius`).
+# - Wir definieren eine Property (`radius`), um den Wert zu lesen.
+# - Dies verhindert unbeabsichtigtes Überschreiben des Attributs von außen,
+#   erlaubt aber Lesezugriff.
+# - Für den Benutzer sieht es so aus, als ob er auf ein Attribut zugreift.
 
 # %%
-class GeoPointV2:  # noqa
-    def __init__(self, x=0.0, y=0.0):
-        self.x = x
-        self.y = y
+class Circle:
+    def __init__(self, radius):
+        if radius < 0:
+            raise ValueError("Radius cannot be negative")
+        # Store the actual value in a "private" attribute
+        self._radius = radius
 
     @property
     def radius(self):
-        return (self.x**2 + self.y**2) ** 0.5
-
-    @radius.setter
-    def radius(self, new_radius):
-        old_radius = self.radius
-        if old_radius == 0.0:
-            raise ValueError("Cannot change radius of origin!")
-        self.x *= new_radius / old_radius
-        self.y *= new_radius / old_radius
+        # The public property only provides read access to _radius
+        print(f"Getting radius (internal value: {self._radius})")
+        return self._radius
 
     @property
-    def angle(self):
-        return math.atan2(self.y, self.x)
+    def area(self):
+        return math.pi * (self._radius**2)
 
     def __repr__(self):
-        return (
-            f"GeoPointV2({self.x:.1f}, {self.y:.1f}, "
-            f"r={self.radius:.2f}, θ={self.angle:.2f})"
-        )
+        return f"Circle(radius={self._radius:.2f})"
 
 
 # %%
-p = GeoPointV2(3.0, 4.0)
-print("Original point:  ", p)
-p.radius = 10.0
-print("Set radius to 10:", p)
+c = Circle(5.0)
+print(c)
 
 # %%
-assert p.radius == 10.0
+# Reading the property works
+print(f"Radius: {c.radius}")
+print(f"Area: {c.area}")
+
+# %%
+# Trying to set the property fails (AttributeError: property 'radius' of 'Circle' object has no setter)
+try:
+    c.radius = 10.0
+except AttributeError as e:
+    print(f"Error: {e}")
+
+# %%
+# The internal value remains unchanged
+print(c)
+print(f"Internal value: {c._radius}")  # We can still access _radius (by convention)
+
+
+# %% [markdown]
+# ## Workshop: Buchinformation
+#
+# Erstellen Sie eine Klasse `Book`, die Informationen über ein Buch verwaltet:
+#
+# - Implementieren Sie Titel und Autor als schreibgeschützte Attribute.
+# - Implementieren Sie eine Property `citation`, die einen Zitationsstring im
+#   Format `"Titel" by Autor` zurückgibt.
+# - Fügen Sie eine `__repr__`-Methode hinzu, die Titel und Autor anzeigt.
+# - Testen Sie die Klasse, indem Sie ein Buch erstellen und die
+#   `citation`-Property abrufen.
+
+# %%
+class Book:
+    def __init__(self, title, author):
+        self._title = title
+        self._author = author
+
+    @property
+    def title(self):
+        return self._title
+
+    @property
+    def author(self):
+        return self._author
+
+    @property
+    def citation(self):
+        return f'\"{self.title}\" by {self.author}'
+
+    def __repr__(self):
+        return f"Book(title={self.title}, author={self.author})"
+
+# %%
+b = Book("1984", "George Orwell")
+
+# %%
+print(b)  # Book(title=1984, author=George Orwell)
+print(b.citation)  # "1984" by George Orwell
+print(b.title)  # 1984
+print(b.author)  # George Orwell
+# %%
